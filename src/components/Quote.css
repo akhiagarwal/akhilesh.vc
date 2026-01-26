@@ -1,0 +1,22 @@
+.quote {
+  background: var(--bg-primary);
+  text-align: center;
+  padding: 120px 0;
+}
+
+.quote-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(24px, 4vw, 42px);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .quote {
+    padding: 80px 0;
+  }
+}

@@ -1,0 +1,66 @@
+.investment-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.investment-card:hover {
+  border-color: var(--accent-purple);
+  transform: translateY(-4px);
+}
+
+.card-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.card-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.9);
+  transition: transform 0.3s ease;
+}
+
+.investment-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.card-description {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.card-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.card-category {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.investment-card:hover .card-category {
+  border-color: var(--text-muted);
+}

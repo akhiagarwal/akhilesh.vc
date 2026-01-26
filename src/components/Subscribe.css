@@ -1,0 +1,57 @@
+.subscribe {
+  padding: 60px 0;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+}
+
+.subscribe-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 20px;
+}
+
+.subscribe-input {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 16px 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  transition: border-color 0.3s ease;
+}
+
+.subscribe-input::placeholder {
+  color: var(--text-muted);
+}
+
+.subscribe-input:focus {
+  outline: none;
+  border-color: var(--accent-purple);
+}
+
+.subscribe-button {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  padding: 16px 40px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.subscribe-button:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .subscribe-form {
+    grid-template-columns: 1fr;
+  }
+
+  .subscribe-button {
+    padding: 16px;
+  }
+}
