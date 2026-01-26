@@ -26,3 +26,5 @@ akhiphoto/
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
