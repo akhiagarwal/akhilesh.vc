@@ -2,46 +2,78 @@
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
+  padding: 100px 0;
 }
 
 .pillars-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 40px;
+  gap: 48px;
 }
 
 .pillar-item {
-  text-align: left;
+  position: relative;
+  padding: 32px 0;
+}
+
+.pillar-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--gradient-purple-pink);
+  transition: width 0.4s ease;
+}
+
+.pillar-item:hover::before {
+  width: 48px;
 }
 
 .pillar-name {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 0.2em;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  transition: var(--transition-fast);
+}
+
+.pillar-item:hover .pillar-name {
   color: var(--accent-purple);
-  margin-bottom: 16px;
 }
 
 .pillar-description {
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+}
+
+.pillar-item:hover .pillar-description {
   color: var(--text-secondary);
 }
 
 @media (max-width: 1200px) {
   .pillars-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
   }
 }
 
 @media (max-width: 768px) {
+  .pillars {
+    padding: 60px 0;
+  }
+
   .pillars-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 32px;
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 480px) {
   .pillars-grid {
     grid-template-columns: 1fr;
   }

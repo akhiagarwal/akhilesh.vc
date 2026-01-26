@@ -1,19 +1,44 @@
 .about {
   background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(ellipse at 100% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 60%);
+  pointer-events: none;
 }
 
 .section-title {
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 3px;
-  color: var(--text-secondary);
+  letter-spacing: 0.3em;
+  color: var(--text-muted);
   margin-bottom: 60px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background: var(--accent-purple);
 }
 
 .about-content {
   display: grid;
-  grid-template-columns: 350px 1fr;
-  gap: 60px;
+  grid-template-columns: 380px 1fr;
+  gap: 80px;
   align-items: start;
 }
 
@@ -21,11 +46,34 @@
   position: relative;
 }
 
+.about-image::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: var(--gradient-purple-pink);
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.about-image:hover::before {
+  opacity: 1;
+}
+
 .about-image img {
   width: 100%;
-  height: 400px;
+  height: 480px;
   object-fit: cover;
+  object-position: top;
+  border-radius: 4px;
   filter: grayscale(20%);
+  transition: all 0.5s ease;
+}
+
+.about-image:hover img {
+  filter: grayscale(0%);
+  transform: translate(-4px, -4px);
 }
 
 .about-text {
@@ -33,23 +81,29 @@
 }
 
 .about-text p {
-  font-size: 15px;
-  line-height: 1.9;
+  font-size: 16px;
+  line-height: 2;
   color: var(--text-secondary);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .about-text p:last-child {
   margin-bottom: 0;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .about-content {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 50px;
   }
 
   .about-image {
-    max-width: 350px;
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-image img {
+    height: 400px;
   }
 }

@@ -1,5 +1,5 @@
 .subscribe {
-  padding: 60px 0;
+  padding: 80px 0;
   background: var(--bg-primary);
   border-top: 1px solid var(--border-color);
 }
@@ -8,42 +8,47 @@
   display: grid;
   grid-template-columns: 1fr 1fr auto;
   gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .subscribe-input {
-  background: transparent;
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
-  padding: 16px 20px;
-  font-size: 12px;
-  letter-spacing: 1px;
+  border-radius: 4px;
+  padding: 18px 24px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
   color: var(--text-primary);
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .subscribe-input::placeholder {
   color: var(--text-muted);
+  letter-spacing: 0.1em;
 }
 
 .subscribe-input:focus {
   outline: none;
   border-color: var(--accent-purple);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
 }
 
 .subscribe-button {
-  background: transparent;
-  border: 1px solid var(--border-color);
-  padding: 16px 40px;
+  background: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  border-radius: 4px;
+  padding: 18px 48px;
   font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--bg-primary);
   transition: all 0.3s ease;
 }
 
 .subscribe-button:hover {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  border-color: var(--text-primary);
+  background: transparent;
+  color: var(--text-primary);
 }
 
 @media (max-width: 768px) {
@@ -52,6 +57,6 @@
   }
 
   .subscribe-button {
-    padding: 16px;
+    padding: 18px;
   }
 }
