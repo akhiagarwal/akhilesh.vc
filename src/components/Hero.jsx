@@ -27,17 +27,17 @@ function Hero() {
       </div>
 
       {/* Pillar tooltips — full-width row in separator area */}
-      <div className="hero-tooltip-row container">
+      <div className="pillars-tooltip container">
         {TOOLTIP_ORDER.map(id => {
           const p = PILLARS.find(x => x.id === id)
           return (
             <div
               key={p.id}
-              className={`hero-tooltip-slot ${hoveredPillar === p.id ? 'hero-tooltip-slot--active' : ''}`}
+              className={`pillars-tooltip-slot ${hoveredPillar === p.id ? 'pillars-tooltip-slot--active' : ''}`}
               style={{ '--c': p.color }}
             >
-              <span className="hero-tooltip-name">{p.label}</span>
-              <p className="hero-tooltip-desc">{p.desc}</p>
+              <span className="pillars-tooltip-name">{p.label}</span>
+              <p className="pillars-tooltip-desc">{p.desc}</p>
             </div>
           )
         })}

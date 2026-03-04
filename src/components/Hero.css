@@ -122,7 +122,7 @@
 
 /* ── Pillar tooltip row (separator area) ──────────────────────────── */
 
-.hero-tooltip-row {
+.pillars-tooltip {
   position: absolute;
   bottom: 15px;
   left: 0;
@@ -134,25 +134,25 @@
   z-index: 20;
 }
 
-.hero-tooltip-slot {
+.pillars-tooltip-slot {
   flex: 1;
 }
 
-.hero-tooltip-slot .hero-tooltip-name,
-.hero-tooltip-slot .hero-tooltip-desc {
+.pillars-tooltip-slot .pillars-tooltip-name,
+.pillars-tooltip-slot .pillars-tooltip-desc {
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.hero-tooltip-slot--active .hero-tooltip-name,
-.hero-tooltip-slot--active .hero-tooltip-desc {
+.pillars-tooltip-slot--active .pillars-tooltip-name,
+.pillars-tooltip-slot--active .pillars-tooltip-desc {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-.hero-tooltip-name {
+.pillars-tooltip-name {
   display: block;
   font-size: 11px;
   font-weight: 700;
@@ -162,7 +162,7 @@
   padding: 28px 20px 14px 0;
 }
 
-.hero-tooltip-desc {
+.pillars-tooltip-desc {
   margin: 0;
   padding: 0 20px 28px 0;
   font-size: 14px;
@@ -198,7 +198,7 @@
     min-height: 320px;
   }
 
-  .hero-tooltip-row { bottom: 20px; }
-  .hero-tooltip-desc { font-size: 12px; padding: 0 16px 20px; }
-  .hero-tooltip-name { padding: 20px 16px 10px; font-size: 10px; }
+  .pillars-tooltip { bottom: 20px; }
+  .pillars-tooltip-desc { font-size: 12px; padding: 0 16px 20px; }
+  .pillars-tooltip-name { padding: 20px 16px 10px; font-size: 10px; }
 }
