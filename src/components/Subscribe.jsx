@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import './Subscribe.css'
 
-const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyYVUQ5BhRGbdRDa_gH6zyv9l6G7RhNSH5ptQJRiBx-FcSsNKt100BuLVFZvLcWH8k/exec'
 
 function Subscribe() {
   const [name, setName] = useState('')
