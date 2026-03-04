@@ -22,14 +22,15 @@ function Subscribe() {
     setErrorMsg('')
 
     try {
-      const formData = new FormData()
-      formData.append('name', name.trim())
-      formData.append('email', email.trim())
+      const params = new URLSearchParams()
+      params.append('name', name.trim())
+      params.append('email', email.trim())
 
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        body: formData,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
       })
 
       // no-cors returns opaque response (status 0), so we can't read it
