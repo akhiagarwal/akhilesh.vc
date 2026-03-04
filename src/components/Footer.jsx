@@ -8,9 +8,6 @@ function Footer() {
         <div className="footer-main">
           <div className="footer-brand">
             <div className="footer-logo">
-              <div className="footer-logo-circle">
-                <span>A</span>
-              </div>
               <span className="footer-logo-text">AKHILESH AGARWAL</span>
             </div>
             <p className="footer-tagline">

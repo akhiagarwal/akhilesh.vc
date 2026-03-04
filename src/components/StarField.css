@@ -1,0 +1,49 @@
+.starfield-global {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.gstar {
+  position: absolute;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+/* Slow group — long, gentle pulses */
+.gstar--slow {
+  animation: twinkleSlow ease-in-out infinite;
+}
+
+/* Medium group — moderate rhythm */
+.gstar--medium {
+  animation: twinkleMedium ease-in-out infinite;
+}
+
+/* Fast group — quick flickers */
+.gstar--fast {
+  animation: twinkleFast ease-in-out infinite;
+}
+
+@keyframes twinkleSlow {
+  0%, 100% { opacity: calc(var(--base-op) * 0.3); }
+  50%       { opacity: calc(var(--base-op) * 1.0); }
+}
+
+@keyframes twinkleMedium {
+  0%, 100% { opacity: calc(var(--base-op) * 0.2); }
+  30%       { opacity: calc(var(--base-op) * 1.0); }
+  70%       { opacity: calc(var(--base-op) * 0.5); }
+}
+
+@keyframes twinkleFast {
+  0%, 100% { opacity: calc(var(--base-op) * 0.15); }
+  20%       { opacity: calc(var(--base-op) * 1.0);  }
+  50%       { opacity: calc(var(--base-op) * 0.3);  }
+  80%       { opacity: calc(var(--base-op) * 0.9);  }
+}

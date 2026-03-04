@@ -1,49 +1,83 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import './DeeptechWheel.css'
 
-// Placeholder images - replace with actual assets in /public/deeptech/wheel/
 const SECTOR_IMAGES = {
-  life: 'https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=800&h=800&fit=crop', // DNA
-  matter: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=800&fit=crop', // Circuits
-  motion: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&h=800&fit=crop', // Space
-  intelligence: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=800&fit=crop', // AI
-  energy: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=800&fit=crop', // Energy
+  life: 'https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=800&h=800&fit=crop',
+  matter: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=800&fit=crop',
+  motion: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&h=800&fit=crop',
+  intelligence: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=800&fit=crop',
+  energy: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=800&fit=crop',
 }
 
-const SPHERE_IMAGE = 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=400&fit=crop' // Earth/Globe
+const SPHERE_IMAGE = 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=400&fit=crop'
 
 function DeeptechWheel() {
   const [isHovered, setIsHovered] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const containerRef = useRef(null)
+  const wrapperRef = useRef(null)
+  const frameRef = useRef(null)
+  const targetRef = useRef({ x: -25, y: -15 }) // dramatic start angle for entrance
+  const currentRef = useRef({ x: -25, y: -15 })
+  const isIdleRef = useRef(true)
+  const idleTimerRef = useRef(null)
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768)
-    }
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768)
     checkMobile()
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  return (
-    <div className="deeptech-wheel-container">
-      {/* Starfield particles background */}
-      <div className="starfield">
-        {[...Array(50)].map((_, i) => (
-          <span key={i} className="star" style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 4}s`,
-            animationDuration: `${2 + Math.random() * 3}s`,
-          }} />
-        ))}
-      </div>
+  const handleMouseMove = useCallback((e) => {
+    if (isMobile) return
+    const el = containerRef.current
+    if (!el) return
+    isIdleRef.current = false
+    clearTimeout(idleTimerRef.current)
+    const rect = el.getBoundingClientRect()
+    const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2)
+    const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2)
+    targetRef.current = { x: dx * 14, y: dy * 9 + 5 }
+    idleTimerRef.current = setTimeout(() => { isIdleRef.current = true }, 2200)
+  }, [isMobile])
 
+  useEffect(() => {
+    if (isMobile) return
+    const animate = (time) => {
+      if (isIdleRef.current) {
+        targetRef.current = {
+          x: Math.sin(time * 0.00042) * 8,
+          y: Math.cos(time * 0.00028) * 4 + 5,
+        }
+      }
+      currentRef.current.x += (targetRef.current.x - currentRef.current.x) * 0.045
+      currentRef.current.y += (targetRef.current.y - currentRef.current.y) * 0.045
+      if (wrapperRef.current) {
+        wrapperRef.current.style.transform =
+          `rotateY(${currentRef.current.x}deg) rotateX(${-currentRef.current.y}deg)`
+      }
+      frameRef.current = requestAnimationFrame(animate)
+    }
+    frameRef.current = requestAnimationFrame(animate)
+    return () => {
+      cancelAnimationFrame(frameRef.current)
+      clearTimeout(idleTimerRef.current)
+    }
+  }, [isMobile])
+
+  return (
+    <div
+      className="deeptech-wheel-container"
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Main wheel wrapper with 3D perspective */}
       <div
         className={`deeptech-wheel-wrapper ${isHovered ? 'hovered' : ''} ${isMobile ? 'mobile' : ''}`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        ref={wrapperRef}
       >
         {/* Outer glow ring */}
         <div className="wheel-outer-glow" />

@@ -8,9 +8,6 @@ function Header() {
     <header className="header">
       <div className="container header-container">
         <Link to="/" className="logo">
-          <div className="logo-circle">
-            <span className="logo-symbol">A</span>
-          </div>
           <span className="logo-text">AKHILESH AGARWAL</span>
         </Link>
 
