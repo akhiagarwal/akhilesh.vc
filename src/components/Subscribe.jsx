@@ -1,28 +1,59 @@
 import { useState } from 'react'
 import './Subscribe.css'
 
+const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL
+
 function Subscribe() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [errorMsg, setErrorMsg] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Subscribe:', { name, email })
-    setName('')
-    setEmail('')
+
+    if (!name.trim() || !email.trim()) {
+      setStatus('error')
+      setErrorMsg('Please fill in both name and email.')
+      return
+    }
+
+    setStatus('loading')
+    setErrorMsg('')
+
+    try {
+      const formData = new FormData()
+      formData.append('name', name.trim())
+      formData.append('email', email.trim())
+
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData,
+      })
+
+      // no-cors returns opaque response (status 0), so we can't read it
+      // Trust that the request went through if no network error was thrown
+      setStatus('success')
+      setName('')
+      setEmail('')
+    } catch {
+      setStatus('error')
+      setErrorMsg('Something went wrong. Please try again.')
+    }
   }
 
   return (
     <section className="subscribe">
       <div className="container">
-<form className="subscribe-form" onSubmit={handleSubmit}>
+        <form className="subscribe-form" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="YOUR NAME"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="subscribe-input"
+            disabled={status === 'loading'}
           />
           <input
             type="email"
@@ -30,10 +61,23 @@ function Subscribe() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="subscribe-input"
+            disabled={status === 'loading'}
           />
-          <button type="submit" className="subscribe-button">
-            SUBSCRIBE TO CONTENT
+          <button
+            type="submit"
+            className="subscribe-button"
+            disabled={status === 'loading'}
+          >
+            {status === 'loading' ? 'SUBSCRIBING...' : 'SUBSCRIBE TO CONTENT'}
           </button>
+          {status === 'success' && (
+            <p className="subscribe-message subscribe-success">
+              Thanks for subscribing!
+            </p>
+          )}
+          {status === 'error' && (
+            <p className="subscribe-message subscribe-error">{errorMsg}</p>
+          )}
         </form>
       </div>
     </section>
