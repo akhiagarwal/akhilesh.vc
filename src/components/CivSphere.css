@@ -67,6 +67,63 @@
   :root { --civ-sphere-size: clamp(240px, 86vw, 320px); }
 }
 
+/* ── Layer toggle controls ────────────────── */
+
+.civ-sphere-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.civ-sphere-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.civ-sphere-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px 5px 9px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.civ-sphere-toggle-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--layer-color);
+  opacity: 0.25;
+  flex-shrink: 0;
+  transition: opacity 0.25s ease;
+}
+
+.civ-sphere-toggle.active {
+  border-color: color-mix(in srgb, var(--layer-color) 35%, transparent);
+  color: rgba(255, 255, 255, 0.70);
+}
+
+.civ-sphere-toggle.active .civ-sphere-toggle-dot {
+  opacity: 1;
+}
+
+.civ-sphere-toggle:hover {
+  border-color: color-mix(in srgb, var(--layer-color) 50%, transparent);
+  color: rgba(255, 255, 255, 0.85);
+}
+
 /* ── Reduced motion ───────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .civ-sphere-wrapper,

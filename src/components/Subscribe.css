@@ -50,3 +50,9 @@
   .subscribe-form { grid-template-columns: 1fr; }
   .subscribe-button { padding: 14px; }
 }
+
+@media (max-width: 576px) {
+  .subscribe {
+    padding: 48px 0;
+  }
+}

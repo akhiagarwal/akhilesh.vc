@@ -41,3 +41,17 @@
   color: var(--text-primary);
   transition: border-color 0.4s ease, box-shadow 0.4s ease, color 0.2s ease;
 }
+
+@media (max-width: 576px) {
+  .deliberate-futures-page {
+    padding-top: 80px;
+  }
+
+  .deliberate-futures-hero {
+    padding: 40px 0;
+  }
+
+  .deliberate-futures-subtitle {
+    font-size: 15px;
+  }
+}

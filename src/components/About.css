@@ -82,4 +82,13 @@
   .about-image img {
     height: 400px;
   }
+
+  .about-text p {
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .about-text {
+    min-height: auto;
+  }
 }

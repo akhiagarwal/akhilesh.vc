@@ -50,6 +50,18 @@
   .portfolio-grid .investment-card {
     border-right: none;
   }
+
+  .card-header {
+    padding: 20px 24px 16px;
+  }
+
+  .card-image {
+    height: 240px;
+  }
+
+  .card-body {
+    padding: 20px 24px 24px;
+  }
 }
 
 .investment-card:hover {

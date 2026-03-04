@@ -11,47 +11,6 @@
   padding-bottom: 60px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-.footer-brand { max-width: 360px; }
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.footer-logo-circle {
-  width: 30px;
-  height: 30px;
-  border-radius: 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 13px;
-  color: white;
-}
-.footer-logo-text {
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
-}
-.footer-tagline {
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.25);
-  font-weight: 300;
-}
-.footer-nav-title {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.35);
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
 .footer-nav {
   display: flex;
   flex-direction: row;
@@ -64,11 +23,6 @@
   transition: color 0.2s ease;
 }
 .footer-nav a:hover { color: rgba(167, 139, 250, 0.7); }
-.footer-social {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
 .footer-social-icons {
   display: flex;
   gap: 16px;
@@ -96,9 +50,33 @@
   font-weight: 300;
 }
 @media (max-width: 768px) {
-  .footer-main { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-  .footer-brand { max-width: 100%; }
-  .footer-logo { justify-content: center; }
-  .footer-nav, .footer-social { align-items: center; }
+  .footer-main {
+    flex-direction: column;
+    gap: 32px;
+    text-align: center;
+  }
+  .footer-nav {
+    justify-content: center;
+  }
+  .footer-social-icons {
+    justify-content: center;
+  }
 }
-@media (max-width: 576px) { .footer { padding: 60px 0 30px; } }
+
+@media (max-width: 576px) {
+  .footer {
+    padding: 32px 0 24px;
+  }
+  .footer-main {
+    padding-bottom: 32px;
+  }
+  .footer-bottom {
+    padding-top: 24px;
+  }
+  .footer-nav {
+    gap: 24px;
+  }
+  .footer-nav a {
+    font-size: 12px;
+  }
+}

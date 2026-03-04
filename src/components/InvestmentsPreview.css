@@ -183,6 +183,9 @@
   .investments-preview::after {
     background-position: 24px 0, calc(100% - 24px) 0;
   }
+  .investments-header {
+    margin-bottom: 40px;
+  }
   .investments-grid {
     grid-template-columns: 1fr;
     margin: 0 24px;
@@ -199,4 +202,5 @@
     width: auto;
   }
   .investments-grid .investment-card { border-right: none; }
+  .investments-cta { padding-top: 40px; }
 }
