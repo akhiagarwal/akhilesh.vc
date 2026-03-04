@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import './Subscribe.css'
 
 const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL
@@ -8,8 +8,10 @@ function Subscribe() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState('idle') // idle | loading | success | error
   const [errorMsg, setErrorMsg] = useState('')
+  const iframeRef = useRef(null)
+  const formRef = useRef(null)
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
 
     if (!name.trim() || !email.trim()) {
@@ -21,33 +23,44 @@ function Subscribe() {
     setStatus('loading')
     setErrorMsg('')
 
-    try {
-      const params = new URLSearchParams()
-      params.append('name', name.trim())
-      params.append('email', email.trim())
+    // Submit via hidden iframe to avoid CORS/redirect issues
+    const iframe = iframeRef.current
+    const form = formRef.current
 
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: params.toString(),
-      })
-
-      // no-cors returns opaque response (status 0), so we can't read it
-      // Trust that the request went through if no network error was thrown
+    // Listen for iframe load (means Apps Script responded)
+    const onLoad = () => {
+      iframe.removeEventListener('load', onLoad)
       setStatus('success')
       setName('')
       setEmail('')
-    } catch {
-      setStatus('error')
-      setErrorMsg('Something went wrong. Please try again.')
     }
+    iframe.addEventListener('load', onLoad)
+
+    // Set a timeout in case iframe load doesn't fire
+    setTimeout(() => {
+      if (status === 'loading') {
+        setStatus('success')
+        setName('')
+        setEmail('')
+      }
+    }, 5000)
+
+    form.submit()
   }
 
   return (
     <section className="subscribe">
       <div className="container">
-        <form className="subscribe-form" onSubmit={handleSubmit}>
+        {/* Hidden iframe target for form submission */}
+        <iframe
+          ref={iframeRef}
+          name="subscribe-iframe"
+          style={{ display: 'none' }}
+          title="subscribe"
+        />
+
+        {/* Visible React-controlled form */}
+        <div className="subscribe-form" role="form">
           <input
             type="text"
             placeholder="YOUR NAME"
@@ -65,9 +78,10 @@ function Subscribe() {
             disabled={status === 'loading'}
           />
           <button
-            type="submit"
+            type="button"
             className="subscribe-button"
             disabled={status === 'loading'}
+            onClick={handleSubmit}
           >
             {status === 'loading' ? 'SUBSCRIBING...' : 'SUBSCRIBE TO CONTENT'}
           </button>
@@ -79,6 +93,18 @@ function Subscribe() {
           {status === 'error' && (
             <p className="subscribe-message subscribe-error">{errorMsg}</p>
           )}
+        </div>
+
+        {/* Hidden real form that submits to iframe */}
+        <form
+          ref={formRef}
+          action={GOOGLE_SCRIPT_URL}
+          method="POST"
+          target="subscribe-iframe"
+          style={{ display: 'none' }}
+        >
+          <input type="hidden" name="name" value={name} />
+          <input type="hidden" name="email" value={email} />
         </form>
       </div>
     </section>
