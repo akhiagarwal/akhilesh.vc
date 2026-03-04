@@ -1,0 +1,74 @@
+/* ============================================
+   CIV SPHERE — CSS handles container,
+   outer glow & 3D perspective only.
+   All visuals are rendered to <canvas>.
+   ============================================ */
+
+:root {
+  --civ-sphere-size: clamp(300px, 48vw, 540px);
+}
+
+.civ-sphere-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  perspective-origin: 50% 48%;
+}
+
+.civ-sphere-wrapper {
+  position: relative;
+  width: var(--civ-sphere-size);
+  height: var(--civ-sphere-size);
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation: civSphereEnter 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes civSphereEnter {
+  from { opacity: 0; transform: rotateY(-25deg) rotateX(15deg) scale(0.85); }
+  to   { opacity: 1; transform: rotateY(0deg)  rotateX(-5deg) scale(1); }
+}
+
+.civ-sphere-wrapper.mobile {
+  animation: civSphereEnter 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.civ-sphere-outer-glow {
+  display: none;
+}
+
+/* The canvas fills the wrapper exactly */
+.civ-sphere-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Responsive ───────────────────────────── */
+
+@media (max-width: 1200px) {
+  :root { --civ-sphere-size: clamp(280px, 52vw, 480px); }
+}
+
+@media (max-width: 768px) {
+  :root { --civ-sphere-size: clamp(260px, 76vw, 400px); }
+  .civ-sphere-wrapper {
+    animation: none;
+    transform: rotateX(5deg) rotateY(0deg);
+  }
+  .civ-sphere-outer-glow { filter: blur(18px); }
+}
+
+@media (max-width: 480px) {
+  :root { --civ-sphere-size: clamp(240px, 86vw, 320px); }
+}
+
+/* ── Reduced motion ───────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .civ-sphere-wrapper,
+  .civ-sphere-outer-glow { animation: none; }
+}

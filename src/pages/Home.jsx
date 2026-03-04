@@ -1,8 +1,5 @@
 import Hero from '../components/Hero'
-import Pillars from '../components/Pillars'
 import About from '../components/About'
-import Quote from '../components/Quote'
-import Approach from '../components/Approach'
 import InvestmentsPreview from '../components/InvestmentsPreview'
 import CTA from '../components/CTA'
 import Subscribe from '../components/Subscribe'
@@ -11,11 +8,17 @@ function Home() {
   return (
     <>
       <Hero />
-      <Pillars />
+      <div className="section-separator">
+        <span className="section-separator-line" />
+        <span className="section-separator-label">About</span>
+        <span className="section-separator-line" />
+      </div>
       <About />
-      <Quote />
-      <Approach />
       <InvestmentsPreview />
+      <div className="section-separator">
+        <span className="section-separator-line" />
+        <span className="section-separator-line" />
+      </div>
       <CTA />
       <Subscribe />
     </>

@@ -1,0 +1,192 @@
+.cosmic-game-wrapper {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+/* Start button */
+.cosmic-start {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.cosmic-start-img {
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 50%;
+  opacity: 0.85;
+}
+
+.cosmic-start:hover {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.2), 0 0 30px rgba(124, 58, 237, 0.08);
+}
+
+/* Arena */
+.cosmic-arena {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #020208;
+  cursor: default;
+  animation: arenaFadeIn 0.4s ease forwards;
+}
+
+.cosmic-arena.game-over {
+  cursor: pointer;
+}
+
+@keyframes arenaFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Star field background */
+.arena-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 80px 120px, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 150px 50px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 200px 180px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 260px 90px, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 310px 200px, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 45px 190px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 120px 220px, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1px 1px at 280px 25px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 340px 140px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 60px 80px, rgba(255, 255, 255, 0.25), transparent),
+    radial-gradient(1px 1px at 180px 140px, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 100px 170px, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 240px 50px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 330px 70px, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1px 1px at 15px 130px, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 290px 160px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 210px 20px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 70px 230px, rgba(255, 255, 255, 0.25), transparent),
+    radial-gradient(1px 1px at 350px 210px, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.cosmic-arena.game-over .arena-stars {
+  animation: starsWindDown 1s ease forwards;
+}
+
+@keyframes starsWindDown {
+  from { opacity: 1; }
+  to { opacity: 0.4; }
+}
+
+/* Subtle nebula glow */
+.arena-nebula {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 25% 40%, rgba(109, 40, 217, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 75% 60%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Entities */
+.cosmic-entity {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  touch-action: none;
+  z-index: 2;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.cosmic-sun,
+.cosmic-moon {
+  cursor: grab;
+  transition: filter 0.2s ease;
+}
+
+.cosmic-sun:hover,
+.cosmic-moon:hover {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+}
+
+.cosmic-sun.dragging,
+.cosmic-moon.dragging {
+  cursor: grabbing;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
+}
+
+.cosmic-bh {
+  filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.5));
+  z-index: 1;
+}
+
+.cosmic-bh.caught {
+  filter: drop-shadow(0 0 14px rgba(124, 58, 237, 0.8));
+}
+
+.cosmic-status {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  z-index: 5;
+  animation: cosmicFadeIn 0.5s ease forwards;
+}
+
+.cosmic-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cosmic-bar-divider {
+  width: 1px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.cosmic-hint {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.cosmic-start-hint {
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+  margin: 4px 0 0;
+  font-family: 'Courier New', 'Lucida Console', monospace;
+}
+
+.cosmic-replay,
+.cosmic-quit {
+  color: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.cosmic-replay:hover,
+.cosmic-quit:hover {
+  color: rgba(139, 92, 246, 0.7);
+}
+
+@keyframes cosmicFadeIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}

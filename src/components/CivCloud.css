@@ -1,0 +1,61 @@
+/* ============================================
+   CIV CLOUD — open nebula, no sphere boundary.
+   All visuals rendered to <canvas>.
+   ============================================ */
+
+:root {
+  --civ-cloud-size: clamp(300px, 48vw, 540px);
+}
+
+.civ-cloud-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  perspective-origin: 50% 48%;
+}
+
+.civ-cloud-wrapper {
+  position: relative;
+  width: var(--civ-cloud-size);
+  height: var(--civ-cloud-size);
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation: civCloudEnter 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes civCloudEnter {
+  from { opacity: 0; transform: rotateY(-18deg) rotateX(10deg) scale(0.88); }
+  to   { opacity: 1; transform: rotateY(0deg)  rotateX(-3deg) scale(1); }
+}
+
+.civ-cloud-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Responsive ───────────────────────────── */
+
+@media (max-width: 1200px) {
+  :root { --civ-cloud-size: clamp(280px, 52vw, 480px); }
+}
+
+@media (max-width: 768px) {
+  :root { --civ-cloud-size: clamp(260px, 76vw, 400px); }
+  .civ-cloud-wrapper {
+    animation: none;
+    transform: rotateX(3deg) rotateY(0deg);
+  }
+}
+
+@media (max-width: 480px) {
+  :root { --civ-cloud-size: clamp(240px, 86vw, 320px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .civ-cloud-wrapper { animation: none; }
+}

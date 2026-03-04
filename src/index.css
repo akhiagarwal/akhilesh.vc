@@ -171,8 +171,6 @@ a[class*="link"]:hover {
 /* Cards, containers, and interactive surfaces */
 [class*="card"]:hover,
 [class*="Card"]:hover,
-[class*="pillar"]:hover,
-[class*="Pillar"]:hover,
 [class*="item"]:hover,
 [class*="Item"]:hover {
   border-color: var(--accent-purple) !important;
@@ -180,17 +178,45 @@ a[class*="link"]:hover {
   transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
-/* Section divider lines glow on hover */
-.section:hover {
-  border-color: rgba(139, 92, 246, 0.3) !important;
-  transition: border-color var(--transition-smooth);
-}
 
 /* Input/form elements */
 input:hover, textarea:hover {
   border-color: var(--accent-purple) !important;
   box-shadow: 0 0 12px rgba(124, 58, 237, 0.15);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* ── Section separator ───────────────────────────────────────────── */
+.section-separator {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 60px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-separator-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.section-separator-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .section-separator { padding: 0 40px; }
+}
+
+@media (max-width: 768px) {
+  .section-separator { padding: 0 24px; }
 }
 
 @keyframes purpleStreak {

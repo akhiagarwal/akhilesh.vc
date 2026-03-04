@@ -16,7 +16,7 @@ function Subscribe() {
   return (
     <section className="subscribe">
       <div className="container">
-        <form className="subscribe-form" onSubmit={handleSubmit}>
+<form className="subscribe-form" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="YOUR NAME"
@@ -32,7 +32,7 @@ function Subscribe() {
             className="subscribe-input"
           />
           <button type="submit" className="subscribe-button">
-            SUBSCRIBE
+            SUBSCRIBE TO CONTENT
           </button>
         </form>
       </div>

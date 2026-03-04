@@ -1,0 +1,43 @@
+.deliberate-futures-page {
+  padding-top: 100px;
+}
+
+.deliberate-futures-hero {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.deliberate-futures-title {
+  font-size: clamp(42px, 5.5vw, 72px);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.deliberate-futures-subtitle {
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+
+.deliberate-futures-coming-soon {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 700;
+  padding: 9px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.deliberate-futures-coming-soon:hover {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.2), 0 0 30px rgba(124, 58, 237, 0.08);
+  color: var(--text-primary);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, color 0.2s ease;
+}

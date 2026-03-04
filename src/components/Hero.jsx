@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import './Hero.css'
-import DeeptechWheel from './DeeptechWheel'
+import CivPillar, { PILLARS, TOOLTIP_ORDER } from './CivPillar'
 import PillarsText from './PillarsText'
 
 function Hero() {
+  const [hoveredPillar, setHoveredPillar] = useState(null)
+
   return (
     <section className="hero">
       <div className="hero-bg">
@@ -16,15 +19,28 @@ function Hero() {
           <p className="hero-subtitle">
             Backing visionary founders who are consciously and deliberately shaping a resilient and thriving future for our species.
           </p>
-          <a href="#contact" className="hero-cta">
-            Get in Touch
-            <span className="hero-cta-arrow">&rarr;</span>
-          </a>
         </div>
 
         <div className="hero-visual">
-          <DeeptechWheel />
+          <CivPillar onPillarHover={setHoveredPillar} />
         </div>
+      </div>
+
+      {/* Pillar tooltips — full-width row in separator area */}
+      <div className="hero-tooltip-row container">
+        {TOOLTIP_ORDER.map(id => {
+          const p = PILLARS.find(x => x.id === id)
+          return (
+            <div
+              key={p.id}
+              className={`hero-tooltip-slot ${hoveredPillar === p.id ? 'hero-tooltip-slot--active' : ''}`}
+              style={{ '--c': p.color }}
+            >
+              <span className="hero-tooltip-name">{p.label}</span>
+              <p className="hero-tooltip-desc">{p.desc}</p>
+            </div>
+          )
+        })}
       </div>
     </section>
   )
