@@ -172,6 +172,70 @@
   font-family: inherit;
 }
 
+/* ── Mobile pillar selector ─────────────────────────────────────── */
+
+.mobile-pillars {
+  display: none;
+}
+
+.mobile-pillars-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mobile-pillar-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(3, 1, 14, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.mobile-pillar-btn.active {
+  border-color: var(--c);
+}
+
+.mobile-pillar-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.mobile-pillar-btn.active .mobile-pillar-dot {
+  opacity: 1;
+}
+
+.mobile-pillar-name {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--c);
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.mobile-pillar-btn.active .mobile-pillar-name {
+  opacity: 1;
+}
+
+.mobile-pillar-desc {
+  margin-top: 16px;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .hero-container {
@@ -189,6 +253,18 @@
   }
 }
 
+@media (max-width: 768px) {
+  .mobile-pillars {
+    display: block;
+    padding-top: 24px;
+    padding-bottom: 40px;
+  }
+
+  .pillars-tooltip {
+    display: none;
+  }
+}
+
 @media (max-width: 576px) {
   .hero {
     padding: 90px 0 0;
@@ -197,8 +273,4 @@
   .hero-visual {
     min-height: 320px;
   }
-
-  .pillars-tooltip { bottom: 20px; }
-  .pillars-tooltip-desc { font-size: 12px; padding: 0 16px 20px; }
-  .pillars-tooltip-name { padding: 20px 16px 10px; font-size: 10px; }
 }

@@ -121,9 +121,7 @@
 @media (max-width: 768px) {
   :root { --civ-pillar-size: clamp(260px, 76vw, 400px); }
   .civ-pillar-wrapper { animation: none; transform: rotateX(3deg); }
-  /* Slightly larger tap targets on mobile */
-  .cp-name { font-size: 10px; opacity: 0.65; }
-  .cp-dot  { opacity: 0.6; }
+  .cp-label { display: none; }
 }
 
 @media (max-width: 480px) {

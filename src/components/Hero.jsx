@@ -5,6 +5,7 @@ import PillarsText from './PillarsText'
 
 function Hero() {
   const [hoveredPillar, setHoveredPillar] = useState(null)
+  const activePillar = PILLARS.find(x => x.id === hoveredPillar)
 
   return (
     <section className="hero">
@@ -26,7 +27,29 @@ function Hero() {
         </div>
       </div>
 
-      {/* Pillar tooltips — full-width row in separator area */}
+      {/* Mobile pillar selector — visible only on mobile */}
+      <div className="mobile-pillars container">
+        <div className="mobile-pillars-row">
+          {PILLARS.map(p => (
+            <button
+              key={p.id}
+              className={`mobile-pillar-btn ${hoveredPillar === p.id ? 'active' : ''}`}
+              style={{ '--c': p.color }}
+              onClick={() => setHoveredPillar(hoveredPillar === p.id ? null : p.id)}
+            >
+              <span className="mobile-pillar-dot" />
+              <span className="mobile-pillar-name">{p.label}</span>
+            </button>
+          ))}
+        </div>
+        {activePillar && (
+          <p className="mobile-pillar-desc" style={{ '--c': activePillar.color }}>
+            {activePillar.desc}
+          </p>
+        )}
+      </div>
+
+      {/* Desktop pillar tooltips — full-width row in separator area */}
       <div className="pillars-tooltip container">
         {TOOLTIP_ORDER.map(id => {
           const p = PILLARS.find(x => x.id === id)
