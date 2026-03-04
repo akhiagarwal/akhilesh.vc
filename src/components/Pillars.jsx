@@ -25,20 +25,14 @@ const pillars = [
 
 function Pillars() {
   return (
-    <section className="pillars section">
-      <div className="container">
-        <div className="pillars-header">
-          <p className="pillars-subtitle">from atoms to the aether</p>
-          <h2 className="pillars-title">Five pillars that define our civilizational future</h2>
-        </div>
-        <div className="pillars-grid">
-          {pillars.map((pillar, index) => (
-            <div key={index} className="pillar-item">
-              <h3 className="pillar-name">{pillar.name}</h3>
-              <p className="pillar-description">{pillar.description}</p>
-            </div>
-          ))}
-        </div>
+    <section className="pillars">
+      <div className="pillars-grid">
+        {pillars.map((pillar, index) => (
+          <div key={index} className="pillar-item">
+            <h3 className="pillar-name">{pillar.name}</h3>
+            <p className="pillar-description">{pillar.description}</p>
+          </div>
+        ))}
       </div>
     </section>
   )

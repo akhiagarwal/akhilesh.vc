@@ -1,1 +1,4 @@
 /* App.css - minimal, most styles are in components */
+.app {
+  position: relative;
+}

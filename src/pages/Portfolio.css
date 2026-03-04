@@ -1,5 +1,27 @@
 .portfolio-page {
   padding-top: 100px;
+  position: relative;
+}
+
+/* Full-height vertical border lines on left and right */
+.portfolio-page::before,
+.portfolio-page::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.portfolio-page::before {
+  left: 60px;
+}
+
+.portfolio-page::after {
+  right: 60px;
 }
 
 .portfolio-hero {
@@ -10,17 +32,27 @@
 
 .portfolio-hero.institutional {
   padding: 60px 0 48px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Horizontal separator between sections — connects to vertical rails */
+.portfolio-hero.institutional::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 60px;
+  right: 60px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .portfolio-title {
-  font-size: clamp(22px, 3vw, 32px);
-  font-weight: 700;
-  letter-spacing: 0.15em;
+  font-size: clamp(42px, 5.5vw, 72px);
+  font-weight: 300;
+  letter-spacing: 0.05em;
   margin-bottom: 36px;
   position: relative;
   z-index: 1;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--text-primary);
 }
 
 .filter-buttons {
@@ -41,7 +73,7 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.5);
-  transition: all 0.2s ease;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, color 0.2s ease;
   cursor: pointer;
   margin-left: -1px;
 }
@@ -51,8 +83,9 @@
 }
 
 .filter-btn:hover {
-  border-color: rgba(255, 255, 255, 0.55);
-  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.2), 0 0 30px rgba(124, 58, 237, 0.08);
+  color: var(--text-primary);
   background: transparent;
   z-index: 1;
   position: relative;
@@ -67,25 +100,120 @@
 }
 
 .portfolio-section {
-  padding: 0 0 100px;
+  padding: 0;
 }
 
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0 60px;
+  position: relative;
+}
+
+/* Top border extending to screen edges */
+.portfolio-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60px;
+  right: -60px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
 }
 
 .portfolio-grid .investment-card {
   border-left: none;
   border-top: none;
+  overflow: visible;
+}
+
+/* Extend row bottom borders to left screen edge */
+.portfolio-grid .investment-card:nth-child(3n+1)::before {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: -60px;
+  right: auto;
+  width: 60px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+
+/* Extend row bottom borders to right screen edge */
+.portfolio-grid .investment-card:nth-child(3n)::before {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: auto;
+  right: -60px;
+  width: 60px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+
+/* Remove right border on last column — the vertical rail handles it */
+.portfolio-grid .investment-card:nth-child(3n) {
+  border-right: none;
 }
 
 @media (max-width: 1024px) {
+  .portfolio-page::before { left: 40px; }
+  .portfolio-page::after { right: 40px; }
+  .portfolio-hero.institutional::before { left: 40px; right: 40px; }
+
   .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
+    margin: 0 40px;
+  }
+
+  .portfolio-grid::before {
+    left: -40px;
+    right: -40px;
+  }
+
+  /* Reset 3-col line extensions */
+  .portfolio-grid .investment-card:nth-child(3n+1)::before {
+    display: none;
+  }
+  .portfolio-grid .investment-card:nth-child(3n)::before {
+    display: none;
+  }
+
+  /* 2-col line extensions */
+  .portfolio-grid .investment-card:nth-child(2n+1)::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: -40px;
+    right: auto;
+    width: 40px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.07);
+    pointer-events: none;
+  }
+  .portfolio-grid .investment-card:nth-child(2n)::before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: auto;
+    right: -40px;
+    width: 40px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.07);
+    pointer-events: none;
+  }
+
+  .portfolio-grid .investment-card:nth-child(3n) {
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  .portfolio-grid .investment-card:nth-child(2n) {
+    border-right: none;
   }
 }
 
@@ -94,12 +222,37 @@
     padding-top: 80px;
   }
 
+  .portfolio-page::before { left: 24px; }
+  .portfolio-page::after { right: 24px; }
+  .portfolio-hero.institutional::before { left: 24px; right: 24px; }
+
   .portfolio-hero {
     padding: 48px 0 36px;
   }
 
   .portfolio-grid {
     grid-template-columns: 1fr;
+    margin: 0 24px;
+  }
+
+  .portfolio-grid::before {
+    left: -24px;
+    right: -24px;
+  }
+
+  /* 1-col: extend both directions */
+  .portfolio-grid .investment-card:nth-child(2n+1)::before,
+  .portfolio-grid .investment-card:nth-child(2n)::before {
+    left: -24px;
+    right: -24px;
+    width: auto;
+  }
+
+  .portfolio-grid .investment-card:nth-child(2n) {
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+  }
+  .portfolio-grid .investment-card {
+    border-right: none;
   }
 
   .filter-buttons {

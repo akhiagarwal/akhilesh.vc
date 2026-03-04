@@ -2,7 +2,12 @@ import './InvestmentCard.css'
 
 function InvestmentCard({ investment }) {
   return (
-    <div className="investment-card">
+    <a
+      href={investment.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="investment-card"
+    >
       <div className="card-header">
         <div className="card-logo">{investment.logo}</div>
       </div>
@@ -17,7 +22,7 @@ function InvestmentCard({ investment }) {
           </span>
         </div>
       </div>
-    </div>
+    </a>
   )
 }
 

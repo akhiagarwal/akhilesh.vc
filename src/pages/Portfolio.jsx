@@ -40,12 +40,10 @@ function Portfolio() {
       </section>
 
       <section className="portfolio-section">
-        <div className="container">
-          <div className="portfolio-grid">
-            {filteredAngel.map((investment) => (
-              <InvestmentCard key={investment.id} investment={investment} />
-            ))}
-          </div>
+        <div className="portfolio-grid">
+          {filteredAngel.map((investment) => (
+            <InvestmentCard key={investment.id} investment={investment} />
+          ))}
         </div>
       </section>
 
@@ -58,12 +56,10 @@ function Portfolio() {
           </section>
 
           <section className="portfolio-section">
-            <div className="container">
-              <div className="portfolio-grid">
-                {filteredInstitutional.map((investment) => (
-                  <InvestmentCard key={investment.id} investment={investment} />
-                ))}
-              </div>
+            <div className="portfolio-grid">
+              {filteredInstitutional.map((investment) => (
+                <InvestmentCard key={investment.id} investment={investment} />
+              ))}
             </div>
           </section>
         </>

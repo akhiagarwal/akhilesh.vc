@@ -1,16 +1,20 @@
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './Header.css'
 
 function Header() {
   const location = useLocation()
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <header className="header">
-      <div className="container header-container">
-        <Link to="/" className="logo">
-          <span className="logo-text">AKHILESH AGARWAL</span>
-        </Link>
-
+    <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
+      <div className="header-container">
         <nav className="nav">
           <Link
             to="/"
@@ -18,18 +22,25 @@ function Header() {
           >
             Home
           </Link>
+
+          <span className="header-divider" />
+
           <Link
             to="/portfolio"
             className={`nav-link ${location.pathname === '/portfolio' ? 'active' : ''}`}
           >
             Portfolio
           </Link>
-        </nav>
 
-        <a href="#contact" className="cta-button">
-          Get in Touch
-          <span className="cta-arrow">&rarr;</span>
-        </a>
+          <span className="header-divider" />
+
+          <Link
+            to="/deliberate-futures"
+            className={`nav-link ${location.pathname === '/deliberate-futures' ? 'active' : ''}`}
+          >
+            Book
+          </Link>
+        </nav>
       </div>
     </header>
   )

@@ -2,10 +2,25 @@
 .cta {
   position: relative;
   text-align: center;
-  padding: 140px 0;
+  padding: 48px 0;
   overflow: hidden;
-  background: #000;
+  background: transparent;
 }
+
+/* Purple ambient glow */
+.cta::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(ellipse, rgba(109, 40, 217, 0.1) 0%, rgba(76, 29, 149, 0.05) 45%, transparent 70%);
+  pointer-events: none;
+  animation: purplePulse 7s ease-in-out infinite;
+}
+
 .cta-glow { display: none; }
 .cta-container { position: relative; z-index: 1; }
 .cta-label {
@@ -26,11 +41,11 @@
   color: var(--text-primary);
 }
 .cta-subtitle {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   max-width: 460px;
-  margin: 0 auto 44px;
+  margin: 0 auto;
   font-weight: 300;
 }
 .cta-action {
@@ -54,4 +69,4 @@
 }
 .cta-action span { font-size: 16px; transition: transform 0.3s ease; }
 .cta-action:hover span { transform: translateX(4px); }
-@media (max-width: 768px) { .cta { padding: 100px 0; } }
+@media (max-width: 768px) { .cta { padding: 36px 0; } }

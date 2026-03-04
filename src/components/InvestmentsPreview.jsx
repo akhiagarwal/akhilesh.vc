@@ -10,16 +10,17 @@ function InvestmentsPreview() {
     <section className="investments-preview section">
       <div className="container">
         <div className="investments-header">
-          <p className="investments-label">Portfolio</p>
-          <h2 className="investments-title">Backed by conviction</h2>
+          <h2 className="investments-title">PORTFOLIO</h2>
         </div>
+      </div>
 
-        <div className="investments-grid">
-          {previewInvestments.map((investment) => (
-            <InvestmentCard key={investment.id} investment={investment} />
-          ))}
-        </div>
+      <div className="investments-grid">
+        {previewInvestments.map((investment) => (
+          <InvestmentCard key={investment.id} investment={investment} />
+        ))}
+      </div>
 
+      <div className="container">
         <div className="investments-cta">
           <Link to="/portfolio" className="view-all-link">
             View all portfolio companies
