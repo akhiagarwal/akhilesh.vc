@@ -1,57 +1,57 @@
-.approach {
-  background: var(--bg-secondary);
-  border-top: 1px solid var(--border-color);
-  position: relative;
-}
 
-.approach::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 0% 50%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 100% 100%, rgba(99, 102, 241, 0.04) 0%, transparent 40%);
-  pointer-events: none;
+.approach {
+  background: #000;
+  position: relative;
 }
 
 .approach-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 120px;
+  gap: 100px;
   align-items: start;
   position: relative;
   z-index: 1;
 }
 
+.approach-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
 .approach-title {
-  font-size: clamp(40px, 5vw, 56px);
-  font-weight: 500;
-  margin-bottom: 28px;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 900;
+  margin-bottom: 24px;
   color: var(--text-primary);
   letter-spacing: -0.02em;
 }
 
 .approach-description {
   font-size: 16px;
-  line-height: 1.9;
-  color: var(--text-secondary);
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.45);
   max-width: 420px;
+  font-weight: 300;
 }
 
 .approach-items {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 0;
 }
 
 .approach-item {
   display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 40px;
+  grid-template-columns: 90px 1fr;
+  gap: 32px;
   align-items: start;
   padding: 32px 0;
-  border-bottom: 1px solid var(--border-color);
-  transition: var(--transition-fast);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.2s ease;
 }
 
 .approach-item:first-child {
@@ -64,25 +64,26 @@
 }
 
 .approach-item:hover {
-  border-color: rgba(168, 85, 247, 0.3);
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
 .approach-question {
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--text-muted);
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.2);
   letter-spacing: 0.05em;
-  transition: var(--transition-fast);
+  transition: color 0.2s ease;
 }
 
 .approach-item:hover .approach-question {
-  color: var(--accent-purple);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .approach-answer {
-  font-size: 15px;
-  line-height: 1.9;
-  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 300;
 }
 
 @media (max-width: 1024px) {
@@ -95,6 +96,6 @@
 @media (max-width: 576px) {
   .approach-item {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
   }
 }

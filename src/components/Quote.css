@@ -1,54 +1,24 @@
+
 .quote {
-  background: var(--bg-primary);
+  background: #000;
   text-align: center;
-  padding: 160px 0;
+  padding: 140px 0;
   position: relative;
   overflow: hidden;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-
-.quote::before,
-.quote::after {
-  content: '"';
-  position: absolute;
-  font-family: 'Space Grotesk', serif;
-  font-size: 400px;
-  font-weight: 700;
-  color: rgba(168, 85, 247, 0.03);
-  line-height: 1;
-  pointer-events: none;
-}
-
-.quote::before {
-  top: -80px;
-  left: 5%;
-}
-
-.quote::after {
-  bottom: -200px;
-  right: 5%;
-  transform: rotate(180deg);
-}
-
 .quote-text {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(28px, 4.5vw, 48px);
-  font-weight: 500;
-  line-height: 1.4;
+  font-size: clamp(22px, 3.5vw, 38px);
+  font-weight: 300;
+  line-height: 1.55;
   letter-spacing: -0.01em;
-  color: var(--text-primary);
-  max-width: 1000px;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 860px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
 }
-
 @media (max-width: 768px) {
-  .quote {
-    padding: 100px 0;
-  }
-
-  .quote::before,
-  .quote::after {
-    font-size: 200px;
-  }
+  .quote { padding: 80px 0; }
 }

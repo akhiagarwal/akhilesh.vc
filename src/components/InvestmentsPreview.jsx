@@ -9,7 +9,10 @@ function InvestmentsPreview() {
   return (
     <section className="investments-preview section">
       <div className="container">
-        <h2 className="investments-title">MY INVESTMENTS</h2>
+        <div className="investments-header">
+          <p className="investments-label">Portfolio</p>
+          <h2 className="investments-title">Backed by conviction</h2>
+        </div>
 
         <div className="investments-grid">
           {previewInvestments.map((investment) => (
@@ -19,7 +22,7 @@ function InvestmentsPreview() {
 
         <div className="investments-cta">
           <Link to="/portfolio" className="view-all-link">
-            VIEW ALL PORTFOLIO COMPANIES
+            View all portfolio companies
           </Link>
         </div>
       </div>

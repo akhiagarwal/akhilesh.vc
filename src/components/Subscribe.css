@@ -1,62 +1,52 @@
+
 .subscribe {
   padding: 80px 0;
-  background: var(--bg-primary);
-  border-top: 1px solid var(--border-color);
+  background: #000;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
-
 .subscribe-form {
   display: grid;
   grid-template-columns: 1fr 1fr auto;
-  gap: 20px;
-  max-width: 900px;
+  gap: 12px;
+  max-width: 860px;
   margin: 0 auto;
 }
-
 .subscribe-input {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  padding: 18px 24px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0;
+  padding: 14px 20px;
   font-size: 13px;
-  letter-spacing: 0.05em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   color: var(--text-primary);
-  transition: all 0.3s ease;
+  transition: border-color 0.2s ease;
 }
-
 .subscribe-input::placeholder {
-  color: var(--text-muted);
-  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 400;
 }
-
 .subscribe-input:focus {
   outline: none;
-  border-color: var(--accent-purple);
-  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.1);
+  border-color: rgba(255, 255, 255, 0.45);
 }
-
 .subscribe-button {
-  background: var(--text-primary);
-  border: 1px solid var(--text-primary);
-  border-radius: 4px;
-  padding: 18px 48px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  color: var(--bg-primary);
-  transition: all 0.3s ease;
-}
-
-.subscribe-button:hover {
   background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0;
+  padding: 14px 32px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  transition: all 0.2s ease;
+}
+.subscribe-button:hover {
+  border-color: rgba(255, 255, 255, 0.55);
   color: var(--text-primary);
 }
-
 @media (max-width: 768px) {
-  .subscribe-form {
-    grid-template-columns: 1fr;
-  }
-
-  .subscribe-button {
-    padding: 18px;
-  }
+  .subscribe-form { grid-template-columns: 1fr; }
+  .subscribe-button { padding: 14px; }
 }

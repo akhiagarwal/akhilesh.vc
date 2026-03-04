@@ -8,7 +8,9 @@ function Header() {
     <header className="header">
       <div className="container header-container">
         <Link to="/" className="logo">
-          <span className="logo-icon">✴</span>
+          <div className="logo-circle">
+            <span className="logo-symbol">A</span>
+          </div>
           <span className="logo-text">AKHILESH AGARWAL</span>
         </Link>
 
@@ -17,19 +19,19 @@ function Header() {
             to="/"
             className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
           >
-            HOME
+            Home
           </Link>
           <Link
             to="/portfolio"
             className={`nav-link ${location.pathname === '/portfolio' ? 'active' : ''}`}
           >
-            PORTFOLIO
+            Portfolio
           </Link>
         </nav>
 
         <a href="#contact" className="cta-button">
-          LET'S TALK
-          <span className="cta-icon">⊕</span>
+          Get in Touch
+          <span className="cta-arrow">&rarr;</span>
         </a>
       </div>
     </header>

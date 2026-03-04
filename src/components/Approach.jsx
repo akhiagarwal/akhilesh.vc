@@ -3,7 +3,7 @@ import './Approach.css'
 const approaches = [
   {
     question: 'WHY?',
-    answer: 'I invest in companies that build the civilizational pillars of life, matter, motion, intelligence, and energy that are the core foundations for humanity\'s advancements.'
+    answer: "I invest in companies that build the civilizational pillars of life, matter, motion, intelligence, and energy that are the core foundations for humanity's advancements."
   },
   {
     question: 'WHEN?',
@@ -17,11 +17,12 @@ const approaches = [
 
 function Approach() {
   return (
-    <section className="approach section mesh-bg">
+    <section className="approach section">
       <div className="container">
         <div className="approach-content">
           <div className="approach-intro">
-            <h2 className="approach-title">MY APPROACH</h2>
+            <p className="approach-label">Investment Philosophy</p>
+            <h2 className="approach-title">My Approach</h2>
             <p className="approach-description">
               My approach to DeepTech is simple: understand why it matters,
               decide when to back it, and commit to how it will be built.
