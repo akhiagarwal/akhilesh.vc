@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import './CosmicGame.css'
+import './EclipseGame.css'
 
 const ARENA_WIDTH = 360
 const ARENA_HEIGHT = 240
 const ENTITY_SIZE = 22
 const BH_SPEED = 0.022
 
-function CosmicGame() {
+function EclipseGame() {
   const [active, setActive] = useState(false)
   const [sun, setSun] = useState({ x: 40, y: ARENA_HEIGHT / 2 })
   const [moon, setMoon] = useState({ x: ARENA_WIDTH - 40, y: ARENA_HEIGHT / 2 })
@@ -150,20 +150,20 @@ function CosmicGame() {
 
   if (!active) {
     return (
-      <div className="cosmic-game-wrapper">
-        <button className="cosmic-start" onClick={activate}>
-          <img src="/images/game-sun.png" alt="sun" className="cosmic-start-img" />
-          <img src="/images/game-blackhole.png" alt="black hole" className="cosmic-start-img" />
-          <img src="/images/game-moon.png" alt="moon" className="cosmic-start-img" />
+      <div className="eclipse-game-wrapper">
+        <button className="eclipse-start" onClick={activate}>
+          <img src="/images/game-sun.png" alt="sun" className="eclipse-start-img" />
+          <img src="/images/game-blackhole.png" alt="black hole" className="eclipse-start-img" />
+          <img src="/images/game-moon.png" alt="moon" className="eclipse-start-img" />
         </button>
       </div>
     )
   }
 
   return (
-    <div className="cosmic-game-wrapper">
+    <div className="eclipse-game-wrapper">
       <div
-        className={`cosmic-arena ${gameState !== 'playing' ? 'game-over' : ''}`}
+        className={`eclipse-arena ${gameState !== 'playing' ? 'game-over' : ''}`}
         style={{ width: ARENA_WIDTH, height: ARENA_HEIGHT }}
         ref={arenaRef}
         onClick={gameState !== 'playing' ? reset : undefined}
@@ -175,41 +175,41 @@ function CosmicGame() {
         <img
           src={gameState === 'won' ? '/images/game-sun.png' : gameState === 'lost' && loser === 'sun' ? '/images/game-blackhole.png' : '/images/game-sun.png'}
           alt="sun"
-          className={`cosmic-entity cosmic-sun ${dragging === 'sun' ? 'dragging' : ''} ${gameState === 'lost' && loser === 'sun' ? 'caught' : ''}`}
+          className={`eclipse-entity eclipse-sun ${dragging === 'sun' ? 'dragging' : ''} ${gameState === 'lost' && loser === 'sun' ? 'caught' : ''}`}
           style={{ left: sun.x, top: sun.y, width: ENTITY_SIZE, height: ENTITY_SIZE }}
           onPointerDown={(e) => handlePointerDown('sun', e)}
         />
         <img
           src="/images/game-blackhole.png"
           alt="black hole"
-          className={`cosmic-entity cosmic-bh ${gameState === 'lost' ? 'caught' : ''}`}
+          className={`eclipse-entity eclipse-bh ${gameState === 'lost' ? 'caught' : ''}`}
           style={{ left: bh.x, top: bh.y, width: ENTITY_SIZE, height: ENTITY_SIZE }}
         />
         <img
           src={gameState === 'won' ? '/images/game-moon.png' : gameState === 'lost' && loser === 'moon' ? '/images/game-blackhole.png' : '/images/game-moon.png'}
           alt="moon"
-          className={`cosmic-entity cosmic-moon ${dragging === 'moon' ? 'dragging' : ''} ${gameState === 'lost' && loser === 'moon' ? 'caught' : ''}`}
+          className={`eclipse-entity eclipse-moon ${dragging === 'moon' ? 'dragging' : ''} ${gameState === 'lost' && loser === 'moon' ? 'caught' : ''}`}
           style={{ left: moon.x, top: moon.y, width: ENTITY_SIZE, height: ENTITY_SIZE }}
           onPointerDown={(e) => handlePointerDown('moon', e)}
         />
 
         {gameState !== 'playing' && (
-          <span className="cosmic-status">
+          <span className="eclipse-status">
             {gameState === 'won' ? '✨' : '💔'}
           </span>
         )}
       </div>
-      <div className="cosmic-bar">
+      <div className="eclipse-bar">
         {gameState !== 'playing' ? (
-          <span className="cosmic-replay" onClick={reset}>replay</span>
+          <span className="eclipse-replay" onClick={reset}>replay</span>
         ) : (
-          <span className="cosmic-hint">drag sun and moon together — avoid the black hole</span>
+          <span className="eclipse-hint">drag sun and moon together — avoid the black hole</span>
         )}
-        <span className="cosmic-bar-divider" />
-        <span className="cosmic-quit" onClick={() => setActive(false)}>quit</span>
+        <span className="eclipse-bar-divider" />
+        <span className="eclipse-quit" onClick={() => setActive(false)}>quit</span>
       </div>
     </div>
   )
 }
 
-export default CosmicGame
+export default EclipseGame

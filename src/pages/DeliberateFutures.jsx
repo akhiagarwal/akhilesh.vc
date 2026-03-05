@@ -1,4 +1,4 @@
-import CosmicGame from '../components/CosmicGame'
+import EclipseGame from '../components/EclipseGame'
 import Subscribe from '../components/Subscribe'
 import './DeliberateFutures.css'
 
@@ -14,7 +14,7 @@ function DeliberateFutures() {
           <p className="deliberate-futures-coming-soon">
             Coming soon
           </p>
-          <CosmicGame />
+          <EclipseGame />
         </div>
       </div>
       <Subscribe />

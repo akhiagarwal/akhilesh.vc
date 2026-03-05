@@ -1,4 +1,4 @@
-.cosmic-game-wrapper {
+.eclipse-game-wrapper {
   margin-top: 48px;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
 }
 
 /* Start button */
-.cosmic-start {
+.eclipse-start {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 10px 28px;
@@ -19,7 +19,7 @@
   transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.cosmic-start-img {
+.eclipse-start-img {
   width: 28px;
   height: 28px;
   object-fit: cover;
@@ -27,13 +27,13 @@
   opacity: 0.85;
 }
 
-.cosmic-start:hover {
+.eclipse-start:hover {
   border-color: rgba(139, 92, 246, 0.5);
   box-shadow: 0 0 15px rgba(124, 58, 237, 0.2), 0 0 30px rgba(124, 58, 237, 0.08);
 }
 
 /* Arena */
-.cosmic-arena {
+.eclipse-arena {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
@@ -43,7 +43,7 @@
   animation: arenaFadeIn 0.4s ease forwards;
 }
 
-.cosmic-arena.game-over {
+.eclipse-arena.game-over {
   cursor: pointer;
 }
 
@@ -80,7 +80,7 @@
     radial-gradient(1px 1px at 350px 210px, rgba(255, 255, 255, 0.4), transparent);
 }
 
-.cosmic-arena.game-over .arena-stars {
+.eclipse-arena.game-over .arena-stars {
   animation: starsWindDown 1s ease forwards;
 }
 
@@ -100,7 +100,7 @@
 }
 
 /* Entities */
-.cosmic-entity {
+.eclipse-entity {
   position: absolute;
   transform: translate(-50%, -50%);
   touch-action: none;
@@ -110,43 +110,43 @@
   display: block;
 }
 
-.cosmic-sun,
-.cosmic-moon {
+.eclipse-sun,
+.eclipse-moon {
   cursor: grab;
   transition: filter 0.2s ease;
 }
 
-.cosmic-sun:hover,
-.cosmic-moon:hover {
+.eclipse-sun:hover,
+.eclipse-moon:hover {
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
 }
 
-.cosmic-sun.dragging,
-.cosmic-moon.dragging {
+.eclipse-sun.dragging,
+.eclipse-moon.dragging {
   cursor: grabbing;
   filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.5));
 }
 
-.cosmic-bh {
+.eclipse-bh {
   filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.5));
   z-index: 1;
 }
 
-.cosmic-bh.caught {
+.eclipse-bh.caught {
   filter: drop-shadow(0 0 14px rgba(124, 58, 237, 0.8));
 }
 
-.cosmic-status {
+.eclipse-status {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 28px;
   z-index: 5;
-  animation: cosmicFadeIn 0.5s ease forwards;
+  animation: eclipseFadeIn 0.5s ease forwards;
 }
 
-.cosmic-bar {
+.eclipse-bar {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -155,17 +155,17 @@
   text-transform: uppercase;
 }
 
-.cosmic-bar-divider {
+.eclipse-bar-divider {
   width: 1px;
   height: 10px;
   background: rgba(255, 255, 255, 0.12);
 }
 
-.cosmic-hint {
+.eclipse-hint {
   color: rgba(255, 255, 255, 0.2);
 }
 
-.cosmic-start-hint {
+.eclipse-start-hint {
   font-size: 8px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -174,19 +174,19 @@
   font-family: 'Courier New', 'Lucida Console', monospace;
 }
 
-.cosmic-replay,
-.cosmic-quit {
+.eclipse-replay,
+.eclipse-quit {
   color: rgba(255, 255, 255, 0.25);
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
-.cosmic-replay:hover,
-.cosmic-quit:hover {
+.eclipse-replay:hover,
+.eclipse-quit:hover {
   color: rgba(139, 92, 246, 0.7);
 }
 
-@keyframes cosmicFadeIn {
+@keyframes eclipseFadeIn {
   from { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
   to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
