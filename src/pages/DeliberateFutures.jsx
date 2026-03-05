@@ -1,4 +1,5 @@
 import EclipseGame from '../components/EclipseGame'
+import CTA from '../components/CTA'
 import Subscribe from '../components/Subscribe'
 import './DeliberateFutures.css'
 
@@ -17,6 +18,7 @@ function DeliberateFutures() {
           <EclipseGame />
         </div>
       </div>
+      <CTA />
       <Subscribe />
     </div>
   )
