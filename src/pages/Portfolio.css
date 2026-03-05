@@ -167,9 +167,19 @@
   pointer-events: none;
 }
 
-/* Remove right border on last column — the vertical rail handles it */
+/* Remove right border on last column */
 .portfolio-grid .investment-card:nth-child(3n) {
   border-right: none;
+}
+
+/* Last row: remove border-bottom + extensions since grid::after handles it */
+.portfolio-grid .investment-card:nth-child(3n+1):nth-last-child(-n+3),
+.portfolio-grid .investment-card:nth-child(3n+1):nth-last-child(-n+3) ~ .investment-card {
+  border-bottom: none;
+}
+.portfolio-grid .investment-card:nth-child(3n+1):nth-last-child(-n+3)::before,
+.portfolio-grid .investment-card:nth-child(3n+1):nth-last-child(-n+3) ~ .investment-card::before {
+  display: none;
 }
 
 @media (max-width: 1024px) {
@@ -228,6 +238,18 @@
   .portfolio-grid .investment-card:nth-child(2n) {
     border-right: none;
   }
+
+  /* Last row: 2-col */
+  .portfolio-grid .investment-card:nth-child(3n+1):nth-last-child(-n+3) { border-bottom: revert; }
+  .portfolio-grid .investment-card:nth-child(3n+1):nth-last-child(-n+3) ~ .investment-card { border-bottom: revert; }
+  .portfolio-grid .investment-card:nth-child(2n+1):nth-last-child(-n+2),
+  .portfolio-grid .investment-card:nth-child(2n+1):nth-last-child(-n+2) ~ .investment-card {
+    border-bottom: none;
+  }
+  .portfolio-grid .investment-card:nth-child(2n+1):nth-last-child(-n+2)::before,
+  .portfolio-grid .investment-card:nth-child(2n+1):nth-last-child(-n+2) ~ .investment-card::before {
+    display: none;
+  }
 }
 
 @media (max-width: 640px) {
@@ -267,6 +289,14 @@
   }
   .portfolio-grid .investment-card {
     border-right: none;
+  }
+
+  /* Last row: 1-col */
+  .portfolio-grid .investment-card:last-child {
+    border-bottom: none;
+  }
+  .portfolio-grid .investment-card:last-child::before {
+    display: none;
   }
 
   .filter-buttons {
