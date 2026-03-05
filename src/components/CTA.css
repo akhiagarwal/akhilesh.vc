@@ -5,6 +5,8 @@
   padding: 48px 0;
   overflow: hidden;
   background: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Purple ambient glow */
