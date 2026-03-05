@@ -59,7 +59,7 @@
   pointer-events: none;
 }
 
-/* Bottom border extending to screen edges */
+/* Bottom border extending to screen edges — matches top */
 .investments-grid::after {
   content: '';
   position: absolute;
@@ -67,13 +67,14 @@
   left: -60px;
   right: -60px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.1);
   pointer-events: none;
 }
 
 .investments-grid .investment-card {
   border-left: none;
   border-top: none;
+  border-bottom: none;
   overflow: visible;
 }
 
