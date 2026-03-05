@@ -123,6 +123,18 @@
   pointer-events: none;
 }
 
+/* Bottom border extending to screen edges */
+.portfolio-grid::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -60px;
+  right: -60px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
 .portfolio-grid .investment-card {
   border-left: none;
   border-top: none;
@@ -170,7 +182,8 @@
     margin: 0 40px;
   }
 
-  .portfolio-grid::before {
+  .portfolio-grid::before,
+  .portfolio-grid::after {
     left: -40px;
     right: -40px;
   }
@@ -235,7 +248,8 @@
     margin: 0 24px;
   }
 
-  .portfolio-grid::before {
+  .portfolio-grid::before,
+  .portfolio-grid::after {
     left: -24px;
     right: -24px;
   }
