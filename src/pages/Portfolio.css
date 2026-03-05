@@ -34,16 +34,7 @@
   padding: 60px 0 48px;
 }
 
-/* Horizontal separator between sections — connects to vertical rails */
-.portfolio-hero.institutional::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 60px;
-  right: 60px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.1);
-}
+/* Horizontal separator removed — angel grid::after handles this boundary */
 
 .portfolio-title {
   font-size: clamp(42px, 5.5vw, 72px);
@@ -185,7 +176,6 @@
 @media (max-width: 1024px) {
   .portfolio-page::before { left: 40px; }
   .portfolio-page::after { right: 40px; }
-  .portfolio-hero.institutional::before { left: 40px; right: 40px; }
 
   .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -259,7 +249,6 @@
 
   .portfolio-page::before { left: 24px; }
   .portfolio-page::after { right: 24px; }
-  .portfolio-hero.institutional::before { left: 24px; right: 24px; }
 
   .portfolio-hero {
     padding: 48px 0 36px;
