@@ -4,23 +4,7 @@
   overflow: hidden;
 }
 
-/* Vertical rail lines — above card content */
-.investments-preview::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.07)),
-    linear-gradient(rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.07));
-  background-size: 1px 100%, 1px 100%;
-  background-position: 60px 0, calc(100% - 60px) 0;
-  background-repeat: no-repeat;
-  z-index: 1;
-  pointer-events: none;
-}
+/* Vertical rail lines removed — they caused intersection artifacts with card borders */
 
 /* Animated purple streak on top border */
 .investments-preview::before {
@@ -75,39 +59,25 @@
   pointer-events: none;
 }
 
+/* Bottom border extending to screen edges */
+.investments-grid::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -60px;
+  right: -60px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+
 .investments-grid .investment-card {
   border-left: none;
   border-top: none;
   overflow: visible;
 }
 
-/* Extend row bottom borders to left screen edge */
-.investments-grid .investment-card:nth-child(3n+1)::before {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: -60px;
-  right: auto;
-  width: 60px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.07);
-  pointer-events: none;
-}
-
-/* Extend row bottom borders to right screen edge */
-.investments-grid .investment-card:nth-child(3n)::before {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: auto;
-  right: -60px;
-  width: 60px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.07);
-  pointer-events: none;
-}
-
-/* Remove right border on last column — the vertical rail handles it */
+/* Remove right border on last column */
 .investments-grid .investment-card:nth-child(3n) {
   border-right: none;
 }
@@ -132,57 +102,20 @@
 .view-all-link:hover::after { transform: translateX(4px); }
 
 @media (max-width: 1024px) {
-  .investments-preview::after {
-    background-position: 40px 0, calc(100% - 40px) 0;
-  }
   .investments-grid {
     grid-template-columns: repeat(2, 1fr);
     margin: 0 40px;
   }
-  .investments-grid::before {
+  .investments-grid::before,
+  .investments-grid::after {
     left: -40px;
     right: -40px;
-  }
-  /* Reset 3-col line extensions */
-  .investments-grid .investment-card:nth-child(3n+1)::before {
-    display: none;
-  }
-  .investments-grid .investment-card:nth-child(3n)::before {
-    display: none;
-  }
-  /* 2-col line extensions */
-  .investments-grid .investment-card:nth-child(2n+1)::before {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: -1px;
-    left: -40px;
-    right: auto;
-    width: 40px;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.07);
-    pointer-events: none;
-  }
-  .investments-grid .investment-card:nth-child(2n)::before {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: -1px;
-    left: auto;
-    right: -40px;
-    width: 40px;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.07);
-    pointer-events: none;
   }
   .investments-grid .investment-card:nth-child(3n) { border-right: 1px solid rgba(255, 255, 255, 0.07); }
   .investments-grid .investment-card:nth-child(2n) { border-right: none; }
 }
 
 @media (max-width: 640px) {
-  .investments-preview::after {
-    background-position: 24px 0, calc(100% - 24px) 0;
-  }
   .investments-header {
     margin-bottom: 40px;
   }
@@ -190,16 +123,10 @@
     grid-template-columns: 1fr;
     margin: 0 24px;
   }
-  .investments-grid::before {
+  .investments-grid::before,
+  .investments-grid::after {
     left: -24px;
     right: -24px;
-  }
-  /* 1-col: extend both directions */
-  .investments-grid .investment-card:nth-child(2n+1)::before,
-  .investments-grid .investment-card:nth-child(2n)::before {
-    left: -24px;
-    right: -24px;
-    width: auto;
   }
   .investments-grid .investment-card { border-right: none; }
   .investments-cta { padding-top: 40px; }
