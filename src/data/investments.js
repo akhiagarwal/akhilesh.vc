@@ -49,7 +49,7 @@ export const investments = {
       id: 6,
       name: 'Serendipity Space',
       logo: 'SERENDIPITY SPACE',
-      image: 'https://images.unsplash.com/photo-1614728263952-84ea256f9679?w=600&h=400&fit=crop',
+      image: '/images/serendipity-space.png',
       description: 'Processes pharmaceutical compounds in microgravity aboard satellites to create higher-quality drug formulations.',
       categories: ['LIFE', 'MOTION'],
       url: 'https://www.serendipityspace.in/'
