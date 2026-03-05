@@ -16,8 +16,7 @@ function Home() {
       <About />
       <InvestmentsPreview />
       <div className="section-separator">
-        <span className="section-separator-line" />
-        <span className="section-separator-line" />
+        <span className="section-separator-line" style={{ flex: 1 }} />
       </div>
       <CTA />
       <Subscribe />
