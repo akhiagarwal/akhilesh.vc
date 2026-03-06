@@ -2,3 +2,34 @@
 .app {
   position: relative;
 }
+
+/* Full-height vertical border lines on left and right — spans all pages */
+.app::before,
+.app::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.app::before {
+  left: 60px;
+}
+
+.app::after {
+  right: 60px;
+}
+
+@media (max-width: 1024px) {
+  .app::before { left: 40px; }
+  .app::after { right: 40px; }
+}
+
+@media (max-width: 640px) {
+  .app::before { left: 24px; }
+  .app::after { right: 24px; }
+}

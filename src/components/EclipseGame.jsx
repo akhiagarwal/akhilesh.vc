@@ -161,12 +161,14 @@ function EclipseGame() {
   }
 
   return (
-    <div className="eclipse-game-wrapper">
+    <>
+    <div className="eclipse-overlay" onClick={() => setActive(false)} />
+    <div className="eclipse-game-wrapper active" onClick={() => setActive(false)}>
       <div
         className={`eclipse-arena ${gameState !== 'playing' ? 'game-over' : ''}`}
         style={{ width: ARENA_WIDTH, height: ARENA_HEIGHT }}
         ref={arenaRef}
-        onClick={gameState !== 'playing' ? reset : undefined}
+        onClick={(e) => { e.stopPropagation(); if (gameState !== 'playing') reset(); }}
       >
         {/* Stars background */}
         <div className="arena-stars" />
@@ -199,16 +201,15 @@ function EclipseGame() {
           </span>
         )}
       </div>
-      <div className="eclipse-bar">
+      <div className="eclipse-bar" onClick={(e) => e.stopPropagation()}>
         {gameState !== 'playing' ? (
           <span className="eclipse-replay" onClick={reset}>replay</span>
         ) : (
           <span className="eclipse-hint">drag sun and moon together — avoid the black hole</span>
         )}
-        <span className="eclipse-bar-divider" />
-        <span className="eclipse-quit" onClick={() => setActive(false)}>quit</span>
       </div>
     </div>
+    </>
   )
 }
 
