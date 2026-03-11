@@ -9,7 +9,7 @@ function Footer() {
           <nav className="footer-nav">
             <Link to="/">Home</Link>
             <Link to="/portfolio">Portfolio</Link>
-            <Link to="/deliberate-futures">Book</Link>
+            <Link to="/deliberate-futures">Other</Link>
           </nav>
 
           <div className="footer-social-icons">

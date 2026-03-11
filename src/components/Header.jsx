@@ -38,7 +38,7 @@ function Header() {
             to="/deliberate-futures"
             className={`nav-link ${location.pathname === '/deliberate-futures' ? 'active' : ''}`}
           >
-            Book
+            Other
           </Link>
         </nav>
       </div>
